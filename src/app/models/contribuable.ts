@@ -1,13 +1,17 @@
 import { validateConfig } from '@angular/router/src/config';
+import { DeclarationImpots } from './declarationImpots';
 
 
 export class Contribuable {
-     nif: number;
-     login: string ;
-     password: string;
-     dateNaissance: Date;
-     email: string;
-     Status: string;
-
+       nif;
+       login;
+       password;
+       email;
+       tel;
+      numCnss;
+      nationnalite;
+      adresse;
+      status;
+     DeclarationImpots : DeclarationImpots;
 }
 
