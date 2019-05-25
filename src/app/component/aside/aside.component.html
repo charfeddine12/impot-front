@@ -1,0 +1,80 @@
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a class="" href="#">
+                    <i class="icon_house_alt"></i>
+                    <span>Tableau de bord</span>
+                </a>
+            </li>
+            <li class="" *ngIf="loggedUser.role_emp == 'Adminstrateur'">
+                <a >
+                    <i class="social_myspace"></i>
+                    <span>Employées</span>
+                </a>
+            </li>
+            <li class="sub-menu" [ngClass]="{'active':stkSub}" (click)="stkSub=!stkSub" *ngIf="loggedUser.role_emp == 'Adminstrateur'">
+                    <a class="" style="cursor: pointer;">
+                        <i class="icon_document_alt"></i>
+                        <span>Stock</span>
+                        <span class="menu-arrow " [ngClass]="{'arrow_carrot-down':stkSub, 'arrow_carrot-right': !stkSub}"></span>
+                    </a>
+                    <ul [ngStyle]="{'display':stkSub ? 'block':'none'}" style="list-style-type: none;">
+                        <li><a >Produits</a></li>
+                        <li><a class="" >Catégories</a></li>
+                    </ul>
+                </li>
+            <li class="" *ngIf="loggedUser.role_emp == 'Adminstrateur'">
+                <a  class="">
+                    <i class="icon_documents_alt"></i>
+                    <span>Fournisseurs</span>
+                </a>
+            </li>
+            <li *ngIf="loggedUser.role_emp == 'Adminstrateur'">
+                <a >
+                    <i class="icon_piechart"></i>
+                    <span>Rapports</span>
+                </a>
+            </li>
+            <li class="sub-menu" [ngClass]="{'active':congSub}" (click)="congSub=!congSub">
+                <a class="" style="cursor: pointer;">
+                    <i class="icon_calendar" ></i>
+                    <span>Congés</span>
+                    <span class="menu-arrow" [ngClass]="{'arrow_carrot-down':congSub, 'arrow_carrot-right': !congSub}"></span>
+                </a>
+                <ul [ngStyle]="{'display':congSub ? 'block':'none'}" style="list-style-type: none;">
+                        <li *ngIf="loggedUser.role_emp != 'Adminstrateur'"><a class="" >Mes congés</a></li>
+                        <li *ngIf="loggedUser.role_emp == 'Adminstrateur'"><a class="" >Liste des congés</a></li>
+                        <li><a class="" >Mon calendrier</a></li>
+                    </ul>
+            </li>
+            <li *ngIf="loggedUser.role_emp == 'Caissier'">
+                    <a class="" >
+                        <i class="icon_currency"></i>
+                        <span>Caisse</span>
+                    </a>
+                </li>
+            <li class="sub-menu" [ngClass]="{'active':lgSub}" (click)="lgSub=!lgSub">
+                <a class="" style="cursor: pointer;">
+                    <i class="icon_desktop"></i>
+                    <span>Langue (Fr)</span>
+                    <span class="menu-arrow " [ngClass]="{'arrow_carrot-down':lgSub, 'arrow_carrot-right': !lgSub}"></span>
+                </a>
+                <ul [ngStyle]="{'display':lgSub ? 'block':'none'}" style="list-style-type: none;">
+                    <li><a class="" href="#">Français</a></li>
+                    <li><a class="" href="#">Anglais</a></li>
+                </ul>
+            </li>
+            <li *ngIf="loggedUser.role_emp == 'Adminstrateur'">
+                    <a class="" [>
+                        <i class="icon_cog"></i>
+                        <span>Configurations</span>
+                    </a>
+                </li>
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
