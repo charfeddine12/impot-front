@@ -7,7 +7,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class AdministrateursService {
 
 
-  private uri = 'http://localhost:9099/contribuables/';
+  private uri = 'http://localhost:9099/administrateurs/';
   headers = new HttpHeaders();
   constructor(public http: HttpClient) { }
 

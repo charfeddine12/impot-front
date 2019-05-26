@@ -7,7 +7,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class PersonneMorlsService {
 
 
-  private uri = 'http://localhost:9099/contribuables/';
+  private uri = 'http://localhost:9099/personneMorls/';
   headers = new HttpHeaders();
   constructor(public http: HttpClient) { }
 

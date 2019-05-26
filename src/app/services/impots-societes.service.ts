@@ -7,7 +7,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class ImpotsSocietesService {
 
 
-  private uri = 'http://localhost:9099/contribuables/';
+  private uri = 'http://localhost:9099/impotsSocietes/';
   headers = new HttpHeaders();
   constructor(public http: HttpClient) { }
 

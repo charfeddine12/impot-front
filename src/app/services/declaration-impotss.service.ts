@@ -7,7 +7,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class DeclarationImpotssService {
 
 
-  private uri = 'http://localhost:9099/contribuables/';
+  private uri = 'http://localhost:9099/declarationImpotss/';
   headers = new HttpHeaders();
   constructor(public http: HttpClient) { }
 
