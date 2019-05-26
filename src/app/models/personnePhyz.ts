@@ -1,7 +1,8 @@
 import { validateConfig } from '@angular/router/src/config';
 import { ImportRPP } from './impotsRPP';
+import { Contribuable } from './contribuable';
 
-export class PersonnePhyz {
+export class PersonnePhyz extends Contribuable{
 
      Nom;
 	 Prenom;

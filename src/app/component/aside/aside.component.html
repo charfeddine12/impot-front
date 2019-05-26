@@ -9,31 +9,32 @@
                     <span>Tableau de bord</span>
                 </a>
             </li>
-            <li class="" *ngIf="loggedUser.role_emp == 'Adminstrateur'">
-                <a >
+            <li class="" >
+                <a [routerLink]="['/principal', {outlets: {child1: ['exercice']}}]">
                     <i class="social_myspace"></i>
-                    <span>Employées</span>
+                    <span>Exercice</span>
                 </a>
             </li>
-            <li class="sub-menu" [ngClass]="{'active':stkSub}" (click)="stkSub=!stkSub" *ngIf="loggedUser.role_emp == 'Adminstrateur'">
+            <li class="sub-menu" [ngClass]="{'active':stkSub}" (click)="stkSub=!stkSub" >
                     <a class="" style="cursor: pointer;">
                         <i class="icon_document_alt"></i>
-                        <span>Stock</span>
+                        <span>Personne Morale</span>
                         <span class="menu-arrow " [ngClass]="{'arrow_carrot-down':stkSub, 'arrow_carrot-right': !stkSub}"></span>
                     </a>
                     <ul [ngStyle]="{'display':stkSub ? 'block':'none'}" style="list-style-type: none;">
-                        <li><a >Produits</a></li>
-                        <li><a class="" >Catégories</a></li>
+                        <li><a class="" [routerLink]="['/principal', {outlets: {child1: ['employees']}}]">Employee</a></li>
+                        <li><a class="" [routerLink]="['/principal', {outlets: {child1: ['impotsSociete']}}]">Impots Societe</a></li>
                     </ul>
                 </li>
-            <li class="" *ngIf="loggedUser.role_emp == 'Adminstrateur'">
-                <a  class="">
+            <li class="" >
+                <a [routerLink]="['/principal', {outlets: {child1: ['personnePhyz']}}]" class="">
                     <i class="icon_documents_alt"></i>
-                    <span>Fournisseurs</span>
+                    <span>Personne Physique
+                    </span>
                 </a>
             </li>
-            <li *ngIf="loggedUser.role_emp == 'Adminstrateur'">
-                <a >
+            <li >
+                <a class="" [routerLink]="['/principal', {outlets: {child1: ['rapports']}}]">
                     <i class="icon_piechart"></i>
                     <span>Rapports</span>
                 </a>
@@ -45,13 +46,13 @@
                     <span class="menu-arrow" [ngClass]="{'arrow_carrot-down':congSub, 'arrow_carrot-right': !congSub}"></span>
                 </a>
                 <ul [ngStyle]="{'display':congSub ? 'block':'none'}" style="list-style-type: none;">
-                        <li *ngIf="loggedUser.role_emp != 'Adminstrateur'"><a class="" >Mes congés</a></li>
-                        <li *ngIf="loggedUser.role_emp == 'Adminstrateur'"><a class="" >Liste des congés</a></li>
-                        <li><a class="" >Mon calendrier</a></li>
+                        <li ><a class="" [routerLink]="['/principal', {outlets: {child1: ['conges']}}]">Mes congés</a></li>
+                        <li ><a class="" [routerLink]="['/principal', {outlets: {child1: ['conges']}}]">Liste des congés</a></li>
+                        <li><a class="" [routerLink]="['/principal', {outlets: {child1: ['calender']}}]">Mon calendrier</a></li>
                     </ul>
             </li>
-            <li *ngIf="loggedUser.role_emp == 'Caissier'">
-                    <a class="" >
+            <li >
+                    <a class="" [routerLink]="['/principal', {outlets: {child1: ['caisse']}}]">
                         <i class="icon_currency"></i>
                         <span>Caisse</span>
                     </a>
@@ -67,8 +68,8 @@
                     <li><a class="" href="#">Anglais</a></li>
                 </ul>
             </li>
-            <li *ngIf="loggedUser.role_emp == 'Adminstrateur'">
-                    <a class="" [>
+            <li >
+                    <a class="" [routerLink]="['/principal', {outlets: {child1: ['conf']}}]">
                         <i class="icon_cog"></i>
                         <span>Configurations</span>
                     </a>

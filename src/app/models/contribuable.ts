@@ -12,6 +12,7 @@ export class Contribuable {
       nationnalite;
       adresse;
       status;
+      file;
      DeclarationImpots : DeclarationImpots;
 }
 

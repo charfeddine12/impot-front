@@ -1,8 +1,9 @@
 import { validateConfig } from '@angular/router/src/config';
 import { ImpotsSociete } from './impotsSociete';
 import { Employee } from './employee';
+import { Contribuable } from './contribuable';
 
-export class PersoneMor {
+export class PersoneMor extends Contribuable{
      RaisonSocial;
      DateDebutActivite;
      SecteurActivite;

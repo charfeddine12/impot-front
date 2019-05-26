@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,28 @@ export class ContribuableService {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
     return this.http.delete(this.uri + 'delete/' + idCategorie, options);
+  }
+  authentication(login, pwd) {
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.get(this.uri + 'authentication/' + login + '/' + pwd, options);
+  }
+
+  getByLogin(login) {
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.get(this.uri + 'find-by-login/' + login , options);
+  }
+
+  getByLoginAndEmail(login, email) {
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.get(this.uri + 'get-by-email-login/' + login + '/' + email, options);
+  }
+
+  getCode(): Observable<any> {
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.get(this.uri + 'getcode', options);
   }
 }
