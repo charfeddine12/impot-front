@@ -42,13 +42,12 @@
             <li class="sub-menu" [ngClass]="{'active':congSub}" (click)="congSub=!congSub">
                 <a class="" style="cursor: pointer;">
                     <i class="icon_calendar" ></i>
-                    <span>Congés</span>
+                    <span>Inscriptions</span>
                     <span class="menu-arrow" [ngClass]="{'arrow_carrot-down':congSub, 'arrow_carrot-right': !congSub}"></span>
                 </a>
                 <ul [ngStyle]="{'display':congSub ? 'block':'none'}" style="list-style-type: none;">
-                        <li ><a class="" [routerLink]="['/principal', {outlets: {child1: ['conges']}}]">Mes congés</a></li>
-                        <li ><a class="" [routerLink]="['/principal', {outlets: {child1: ['conges']}}]">Liste des congés</a></li>
-                        <li><a class="" [routerLink]="['/principal', {outlets: {child1: ['calender']}}]">Mon calendrier</a></li>
+                        <li ><a class="" [routerLink]="['/principal', {outlets: {child1: ['personnePhyz']}}]">Personne Physique</a></li>
+                        <li ><a class="" [routerLink]="['/principal', {outlets: {child1: ['personneMorl']}}]">Personne Morale</a></li>
                     </ul>
             </li>
             <li >

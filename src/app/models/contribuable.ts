@@ -3,16 +3,16 @@ import { DeclarationImpots } from './declarationImpots';
 
 
 export class Contribuable {
-       nif;
-       login;
-       password;
-       email;
-       tel;
+      nif;
+      login;
+      password;
+      email;
+      tel;
       numCnss;
       nationnalite;
       adresse;
       status;
       file;
-     DeclarationImpots : DeclarationImpots;
+      DeclarationImpots: DeclarationImpots;
 }
 

@@ -4,12 +4,12 @@ import { Contribuable } from './contribuable';
 
 export class PersonnePhyz extends Contribuable{
 
-     Nom;
-	 Prenom;
-	 DateNaissance;
-	 Profession;
-	 EtatCivil;
-	 NbrEnfHandicapeEncharge;
-	 NbreAutreEnf;
-     ImpotsRPP : ImportRPP;
+	Nom;
+	Prenom;
+	DateNaissance;
+	Profession;
+	EtatCivil;
+	NbrEnfHandicapeEncharge;
+	NbreAutreEnf;
+	ImpotsRPP: ImportRPP;
 }

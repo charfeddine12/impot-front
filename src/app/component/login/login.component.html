@@ -2,7 +2,7 @@
 
     <div class="container">
       <form class="login-form" >        
-        <div class="login-wrap" style="padding-bottom: 43px;">
+        <div class="login-wrap" style="padding-bottom: 65px;">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <p style="color: red;" *ngIf="connectionError">Vérifiez vos données!!</p>
             <div class="input-group">
@@ -16,7 +16,19 @@
                 >
             </div>
             <button class="btn btn-info btn-lg btn-block" style="margin-top:15px;" (click)="authentication()">Login</button>
-            <span class="pull-right" style="margin-top:5px;"> <a > Forgot Password?</a></span>
+            <span class="pull-right" style="margin-top:5px;"> <a > Mot de passe oublier?</a></span>
+            <span class="pull-left sub-menu" style="margin-top:5px;" [ngClass]="{'active':stkSub}" (click)="stkSub=!stkSub"> 
+                    <a class="" style="cursor: pointer;">
+                        <span>Inscription</span>
+                        <span class="menu-arrow " [ngClass]="{'arrow_carrot-down':stkSub, 'arrow_carrot-right': !stkSub}"></span>
+                    </a>
+                    <ul [ngStyle]="{'display':stkSub ? 'block':'none'}" style="list-style-type: none;">
+                        <li><a class="" [routerLink]="['/inscrit','phy']">Personne Physique</a></li>
+                        <li><a class="" [routerLink]="['/inscrit','mor']">Personne Morale</a></li>
+                    </ul>
+                </span>
+              
+
         </div>
       </form>
   

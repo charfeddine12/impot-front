@@ -13,6 +13,7 @@ import { EmployeesComponent } from './component/employees/employees.component';
 import { LoyersComponent } from './component/loyers/loyers.component';
 import { MonProfilComponent } from './component/mon-profil/mon-profil.component';
 import { ImpotsSocieteComponent } from './component/impots-societe/impots-societe.component';
+import { InscritComponent } from './component/inscrit/inscrit.component';
 
 
 
@@ -21,7 +22,7 @@ import { ImpotsSocieteComponent } from './component/impots-societe/impots-societ
 const appRoutes: Routes = [
 { path: '', redirectTo: '/login', pathMatch: 'full'},
 { path: 'login', component: LoginComponent },
-{path: 'principal', component: PrincipalComponent},
+{ path: 'inscrit/:identite', component: InscritComponent },
 {path: 'principal', component: PrincipalComponent, children: [
     { path: 'contribuale', component: ContribuablesComponent, outlet: 'child1' },
     { path: 'personneMorl', component: PersonneMorlComponent, outlet: 'child1' },

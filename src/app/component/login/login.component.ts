@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-      this.router.navigate(['/principal']);
+      this.router.navigate(['/login']);
    
   }
 
   authentication() {
+    this.router.navigate(['/principal']);
 
   }
 

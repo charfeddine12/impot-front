@@ -8,8 +8,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ChartModule } from 'angular-highcharts';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BodyComponent } from './component/body/body.component';
@@ -28,6 +27,7 @@ import { ContribuablesComponent } from './component/contribuables/contribuables.
 import { PersonnePhyzComponent } from './component/personne-phyz/personne-phyz.component';
 import { PersonneMorlComponent } from './component/personne-morl/personne-morl.component';
 import { ImpotsSocieteComponent } from './component/impots-societe/impots-societe.component';
+import { InscritComponent } from './component/inscrit/inscrit.component';
 
 
 @NgModule({
@@ -48,7 +48,8 @@ import { ImpotsSocieteComponent } from './component/impots-societe/impots-societ
     ContribuablesComponent,
     PersonnePhyzComponent,
     PersonneMorlComponent,
-    ImpotsSocieteComponent
+    ImpotsSocieteComponent,
+    InscritComponent
   ],
   imports: [
     BrowserModule,
@@ -61,11 +62,7 @@ import { ImpotsSocieteComponent } from './component/impots-societe/impots-societ
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     AlertModule.forRoot(),
-    // FlatpickrModule.forRoot(),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    })
+
   ],
   providers: [],
   bootstrap: [AppComponent]

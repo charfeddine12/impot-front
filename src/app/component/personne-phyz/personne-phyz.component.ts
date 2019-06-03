@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
+import { PersonnePhyz } from 'src/app/models/personnePhyz';
+import { PersoneMor } from 'src/app/models/personeMor';
+import { PersonnePhyzsService } from 'src/app/services/personne-phyzs.service';
+import { PersonneMorlsService } from 'src/app/services/personne-morls.service';
 
 @Component({
   selector: 'app-personne-phyz',
@@ -7,9 +13,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonnePhyzComponent implements OnInit {
 
-  constructor() { }
+  modalRef: BsModalRef;
+  filter = false;
+  personePhyzs;
+  noData = true;
+  dataLoaded = false;
+  employeAdded = false;
+  addingError = false;
+  employeUpdated = false;
+  updatingError = false;
+  emplyeToDelete;
+  indexTodelete;
+  deleted = false;
+  deleteError = false;
+  loggedUser;
+  confirmationpwd;
+  newPersonePhyz= new PersonnePhyz();
+  constructor(private modalService: BsModalService, 
+     private router: Router,
+     private personnePhyzsService: PersonnePhyzsService
+     ) { }
 
   ngOnInit() {
+    this.getAll();
+    this.dataLoaded = true;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+
+  }
+  openDetailsModal(template: TemplateRef<any>, employee) {
+    this.openModal(template);
+  }
+  openUpdateModal(template: TemplateRef<any>, employee) {
+    this.openModal(template);
+  }
+  openDeleteModal(confirmDelete:  TemplateRef<any>, employee, index) {
+    this.emplyeToDelete = employee;
+    this.openModal(confirmDelete);
+    this.indexTodelete = index;
+  }
+
+  showFilter() {
+    this.filter = !this.filter;
+  }
+
+  getAll() {
+    this.personnePhyzsService.getAllContribuable().subscribe(result => {
+      this.personePhyzs = result;
+      if (this.personePhyzs.length > 0) {
+        this.noData = false;
+      }
+    });
   }
 
 }
