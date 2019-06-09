@@ -36,9 +36,11 @@ export class InscritComponent implements OnInit {
   inscription(){
     console.log("!!!sssss!",this.newPersonePhyz)
     if(this.identite == "phy"){
+      this.newPersonePhyz.status= false;
       this.personnePhyzsService.addContribuable(this.newPersonePhyz).subscribe();
 
     }else{
+      this.newPersoneMor.status= false;
       this.personneMorlsService.addContribuable(this.newPersoneMor).subscribe();
 
     }

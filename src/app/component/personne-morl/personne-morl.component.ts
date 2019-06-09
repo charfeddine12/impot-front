@@ -3,7 +3,7 @@ import {  BsModalService } from 'ngx-bootstrap/modal';
 import { PersoneMor } from 'src/app/models/personeMor';
 import { Router } from '@angular/router';
 import { PersonneMorlsService } from 'src/app/services/personne-morls.service';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 
 @Component({
@@ -25,15 +25,17 @@ export class PersonneMorlComponent implements OnInit {
   emplyeToDelete;
   indexTodelete;
   employeToupdate;
-
+  selectedEmployee;
   deleted = false;
   deleteError = false;
   loggedUser;
   confirmationpwd;
   newPersoneMorl= new PersoneMor();
+
   constructor(private modalService: BsModalService, 
      private router: Router,
-     private personneMorlsService: PersonneMorlsService
+     private personneMorlsService: PersonneMorlsService,
+
      ) { }
 
      ngOnInit() {
@@ -47,9 +49,12 @@ export class PersonneMorlComponent implements OnInit {
     }
     openDetailsModal(template: TemplateRef<any>, employee) {
       this.openModal(template);
+      console.log("emddployee",employee)
+
+      this.selectedEmployee = employee;
+
     }
     openUpdateModal(template: TemplateRef<any>, employee) {
-      console.log("employee",employee)
       this.openModal(template);
       this.employeToupdate = employee;
 
@@ -67,11 +72,23 @@ export class PersonneMorlComponent implements OnInit {
     getAll() {
       this.personneMorlsService.getAllContribuable().subscribe(result => {
         this.personeMorls = result;
-        console.log("this.personeMorls",this.personeMorls)
         if (this.personeMorls.length > 0) {
           this.noData = false;
         }
       });
     }
-
+    updateEmployee() {
+      this.personneMorlsService.updateContribuable(this.employeToupdate).subscribe(result => {
+        this.employeUpdated = true;
+      }, error => {
+        this.employeUpdated = false;
+        this.updatingError = true;
+      });
+      this.modalRef.hide();
+      location.reload();
+    }
+    ConifrmerInscriMoral(personeMor){
+      console.log("2222personeMor",personeMor)
+      this.personneMorlsService.changeStatus(personeMor,"true").subscribe(result => {})
+    }
 }
