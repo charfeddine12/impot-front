@@ -90,5 +90,8 @@ export class PersonneMorlComponent implements OnInit {
     ConifrmerInscriMoral(personeMor){
       console.log("2222personeMor",personeMor)
       this.personneMorlsService.changeStatus(personeMor,"true").subscribe(result => {})
+      this.modalRef.hide();
+      location.reload();
+
     }
 }
