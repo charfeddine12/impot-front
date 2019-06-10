@@ -23,6 +23,7 @@ export class ImpotsSociete {
 	 Penalites;
 	 TaxeVisite;
 	 PrelevementSurFonds;
+	 tatus;
      TVA;
      Loyer : Loyer;
      PersonneMorl : PersoneMor;
