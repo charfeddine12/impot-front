@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ImpotsSociete } from '../models/impotsSociete';
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +12,38 @@ export class ImpotsSocietesService {
   headers = new HttpHeaders();
   constructor(public http: HttpClient) { }
 
-  getAllContribuable() {
+  getAllImpotsSocietes() {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.get(this.uri + '/all', options);
+    return this.http.get(this.uri + 'all', options);
   }
 
-  getContribuableById(idCategorie) {
+  getImpotsSocieteById(idImpotsSocietes) {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.get(this.uri + 'find/' + idCategorie, options);
+    return this.http.get(this.uri + 'find/' + idImpotsSocietes, options);
   }
 
-  addContribuable(categorie) {
+  addImpotsSociete(categorieimpotsSociete) {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.post(this.uri + 'add', categorie, options);
+    return this.http.post(this.uri + 'add', ImpotsSociete, options);
   }
 
-  updateContribuable(categorie) {
+  updateImpotsSociete(impotsSociete) {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.put(this.uri + 'update', categorie, options);
+    return this.http.put(this.uri + 'update', ImpotsSociete, options);
   }
 
-  deleteContribuable(idCategorie) {
+  deleteImpotsSociete(idImpotsSocietes) {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.delete(this.uri + 'delete/' + idCategorie, options);
+    return this.http.delete(this.uri + 'delete/' + idImpotsSocietes, options);
+  }
+  changeStatus(idImpotsSocietes,status){
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.put(this.uri + '/updateStatus/' + idImpotsSocietes + '/' +status, options);
   }
 }
