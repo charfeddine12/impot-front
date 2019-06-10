@@ -16,6 +16,11 @@ export class PersonnePhyzsService {
     return this.http.get(this.uri + '/all', options);
   }
 
+  changeStatus(nif,status){
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.put(this.uri + '/updateStatus/' + nif + '/' +status, options);
+  }
   getContribuableById(idCategorie) {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
