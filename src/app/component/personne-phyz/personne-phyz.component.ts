@@ -23,12 +23,14 @@ export class PersonnePhyzComponent implements OnInit {
   employeUpdated = false;
   updatingError = false;
   emplyeToDelete;
+  personnePhyzsToupdate;
+  selectedEmployee;
   indexTodelete;
   deleted = false;
   deleteError = false;
   loggedUser;
   confirmationpwd;
-  newPersonePhyz= new PersonnePhyz();
+  newPersonePhyz = new PersonnePhyz();
   constructor(private modalService: BsModalService, 
      private router: Router,
      private personnePhyzsService: PersonnePhyzsService
@@ -45,9 +47,11 @@ export class PersonnePhyzComponent implements OnInit {
   }
   openDetailsModal(template: TemplateRef<any>, employee) {
     this.openModal(template);
+    this.selectedEmployee = employee;
   }
   openUpdateModal(template: TemplateRef<any>, employee) {
     this.openModal(template);
+    this.personnePhyzsToupdate = employee;
   }
   openDeleteModal(confirmDelete:  TemplateRef<any>, employee, index) {
     this.emplyeToDelete = employee;
@@ -62,10 +66,25 @@ export class PersonnePhyzComponent implements OnInit {
   getAll() {
     this.personnePhyzsService.getAllContribuable().subscribe(result => {
       this.personePhyzs = result;
+      console.log('re', result)
       if (this.personePhyzs.length > 0) {
         this.noData = false;
       }
     });
+  }
+  updateEmployee() {
+    this.personnePhyzsService.updateContribuable(this.personnePhyzsToupdate).subscribe(result => {
+      this.employeUpdated = true;
+    }, error => {
+      this.employeUpdated = false;
+      this.updatingError = true;
+    });
+    this.modalRef.hide();
+    location.reload();
+  }
+  ConifrmerInscriMoral(personnePhyz){
+    console.log('2222personnePhyz', personnePhyz)
+    this.personnePhyzsService.changeStatus(PersonnePhyz,'true').subscribe(result => {})
   }
 
 }
