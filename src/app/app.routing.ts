@@ -1,6 +1,6 @@
 import { Routes, RouterModule} from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
-import { LoginComponent } from './component/login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
 import { PrincipalComponent } from './component/principal/principal.component';
 import { ContribuablesComponent } from './component/contribuables/contribuables.component';
 import { PersonneMorlComponent } from './component/personne-morl/personne-morl.component';

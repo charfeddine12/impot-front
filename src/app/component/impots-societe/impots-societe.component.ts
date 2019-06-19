@@ -68,18 +68,19 @@ export class ImpotsSocieteComponent implements OnInit {
       }
     
       getAll() {
-        this.impotsSocietesService.getAllImpotsSocietes().subscribe(result => {
+        this.impotsSocietesService.getAllContribuable().subscribe(result => {
           this.impotsSocietes = result;
-          console.log('getAll', result);
           if (this.impotsSocietes.length > 0) {
             this.noData = false;
           }
         });
       }
       addEmployee() {
-        this.impotsSocietesService.addImpotsSociete(this.newImpotsSociete).subscribe(result => {
+        this.impotsSocietesService.addContribuable(this.employeToupdate).subscribe(result => {
+          console.log('this.employeToupdate', this.employeToupdate);
+
           this.employeAdded = true;
-          this.employees.push(this.newImpotsSociete);
+          this.employees.push(this.employeToupdate);
           this.getAll();
         }, error => {
           this.employeAdded = false;
@@ -89,7 +90,7 @@ export class ImpotsSocieteComponent implements OnInit {
   
       }
       updateEmployee() {
-        this.impotsSocietesService.updateImpotsSociete(this.employeToupdate).subscribe(result => {
+        this.impotsSocietesService.updateContribuable(this.employeToupdate).subscribe(result => {
           this.employeUpdated = true;
         }, error => {
           this.employeUpdated = false;
@@ -105,4 +106,5 @@ export class ImpotsSocieteComponent implements OnInit {
         location.reload();
   
       }
-  }
+
+}

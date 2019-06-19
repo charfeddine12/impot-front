@@ -14,12 +14,12 @@ export class PersonneMorlsService {
   changeStatus(nif,status){
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.put(this.uri + '/updateStatus/' + nif + '/' +status, options);
+    return this.http.put(this.uri + 'updateStatus/' + nif + '/' +status, options);
   }
   getAllContribuable() {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.get(this.uri + '/all', options);
+    return this.http.get(this.uri + 'all', options);
   }
 
   getContribuableById(idCategorie) {
