@@ -46,4 +46,9 @@ export class ImpotsSocietesService {
     const options = { headers: this.headers };
     return this.http.put(this.uri + '/updateStatus/' + idImpotsSocietes + '/' +status, options);
   }
+  changeStatus(idImpotsSocietes,status){
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.put(this.uri + 'updateStatus/' + idImpotsSocietes + '/' +status, options);
+  }
 }

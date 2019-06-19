@@ -14,7 +14,7 @@ export class DeclarationImpotssService {
   getAllContribuable() {
     this.headers.append('Accept', 'application/json;charset=UTF-8');
     const options = { headers: this.headers };
-    return this.http.get(this.uri + '/all', options);
+    return this.http.get(this.uri + 'all', options);
   }
 
   getContribuableById(idCategorie) {

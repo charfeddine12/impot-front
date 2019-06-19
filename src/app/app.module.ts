@@ -9,12 +9,12 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { ChartModule } from 'angular-highcharts';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BodyComponent } from './component/body/body.component';
 import { AsideComponent } from './component/aside/aside.component';
 import { HeaderComponent } from './component/header/header.component';
-import { LoginComponent } from './component/login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
 import { PrincipalComponent } from './component/principal/principal.component';
 import { MonProfilComponent } from './component/mon-profil/mon-profil.component';
 import { ExerciceComponent } from './component/exercice/exercice.component';
@@ -28,6 +28,21 @@ import { PersonnePhyzComponent } from './component/personne-phyz/personne-phyz.c
 import { PersonneMorlComponent } from './component/personne-morl/personne-morl.component';
 import { ImpotsSocieteComponent } from './component/impots-societe/impots-societe.component';
 import { InscritComponent } from './component/inscrit/inscrit.component';
+import { ContribuableService } from './services/contribuable.service';
+import { ImpotsRPPsService } from './services/impots-rpps.service';
+import { AdministrateursService } from './services/administrateurs.service';
+import { PersonnePhyzsService } from './services/personne-phyzs.service';
+import { PersonneMorlsService } from './services/personne-morls.service';
+import { LoyersService } from './services/loyers.service';
+import { ExercicesService } from './services/exercices.service';
+import { EmployeesService } from './services/employees.service';
+import { DeclarationImpotssService } from './services/declaration-impotss.service';
+import { DeclarationExistencesService } from './services/declaration-existences.service';
+import { XhrInterceptor } from './authentication/xhr.interceptor';
+import { principalReducer } from './authentication/shared/principal.reducer';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { StoreModule } from '@ngrx/store';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -57,6 +72,9 @@ import { InscritComponent } from './component/inscrit/inscrit.component';
     routing,
     ChartModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    AuthenticationModule,
+    StoreModule.forRoot({principal: principalReducer}),
     FormsModule,
     TypeaheadModule.forRoot(),
     ModalModule.forRoot(),
@@ -64,7 +82,9 @@ import { InscritComponent } from './component/inscrit/inscrit.component';
     AlertModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [ContribuableService,ImpotsRPPsService,AdministrateursService,PersonnePhyzsService,
+    PersonneMorlsService,LoyersService,ExercicesService,EmployeesService,DeclarationImpotssService,
+    DeclarationExistencesService,CookieService,,{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
